@@ -1,15 +1,88 @@
-Source: template-repository
-Section: unknown
+Source: debconf-kde
+Section: kde
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>
+Uploaders: Matthias Klumpp <mak@debian.org>,
+           Maximiliano Curia <maxy@debian.org>,
+Build-Depends: cmake (>= 3.1~),
+               debhelper-compat (= 13),
+               extra-cmake-modules (>= 1.5.0),
+               gettext,
+               libkf5coreaddons-dev (>= 5.0.0),
+               libkf5i18n-dev (>= 5.0.0),
+               libkf5iconthemes-dev (>= 5.0.0),
+               libkf5textwidgets-dev (>= 5.0.0),
+               libkf5widgetsaddons-dev (>= 5.0.0),
+               pkg-kde-tools (>= 0.15.16),
+               qtbase5-dev (>= 5.2.0),
+Standards-Version: 4.6.0
+Homepage: https://projects.kde.org/projects/extragear/sysadmin/libdebconf-kde
+Vcs-Git: https://salsa.debian.org/qt-kde-team/extras/debconf-kde.git
+Vcs-Browser: https://salsa.debian.org/qt-kde-team/extras/debconf-kde
+Rules-Requires-Root: no
 
-Package: template-repository
+Package: debconf-kde-data
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}
+Description: Debconf KDE data files
+ Debconf KDE is a GUI library for including Debconf frontends in Qt-based
+ applications.
+ Debconf is a configuration management system for Debian packages, which
+ is used to ask questions when they are installed.
+ This library is written in C++ and used by Apper and Muon to
+ embed Debconf dialogs.
+ .
+ This package contains the data files needed by the Debconf KDE library
+
+Package: debconf-kde-helper
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Debconf KDE GUI frontend tool
+ Debconf KDE is a GUI library for including Debconf frontends in Qt-based
+ applications.
+ Debconf is a configuration management system for Debian packages, which
+ is used to ask questions when they are installed.
+ This library is written in C++ and used by Apper and Muon to
+ embed Debconf dialogs.
+ .
+ This package contains a small standalone tool to display a KDE Debconf
+ dialog without linking against the Debconf KDE library.
+
+Package: libdebconf-kde-dev
+Section: libdevel
+Architecture: any
+Depends: libdebconf-kde1 (= ${binary:Version}),
+         libkf5coreaddons-dev,
+         libkf5i18n-dev,
+         libkf5iconthemes-dev,
+         libkf5textwidgets-dev,
+         libkf5widgetsaddons-dev,
+         qtbase5-dev (>= 5.2.0),
+         ${misc:Depends},
+Description: Development headers for the Debconf KDE library
+ Debconf KDE is a GUI library for including Debconf frontends in Qt-based
+ applications.
+ Debconf is a configuration management system for Debian packages, which
+ is used to ask questions when they are installed.
+ This library is written in C++ and used by Apper and Muon to
+ embed Debconf dialogs.
+ .
+ This package contains the development headers for the Debconf KDE library
+
+Package: libdebconf-kde1
+Section: libs
+Architecture: any
+Multi-Arch: same
+Depends: debconf-kde-data (= ${source:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Description: Debconf KDE GUI library
+ Debconf KDE is a GUI library for including Debconf frontends in Qt-based
+ applications.
+ Debconf is a configuration management system for Debian packages, which
+ is used to ask questions when they are installed.
+ This library is written in C++ and used by Apper and Muon to
+ embed Debconf dialogs.
+ .
+ This package contains the Debconf KDE library
