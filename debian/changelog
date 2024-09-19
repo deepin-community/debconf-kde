@@ -1,3 +1,9 @@
+debconf-kde (1.1.0-1deepin0) unstable; urgency=medium
+
+  * No source change upload against GCC 12.
+
+ -- Tianyu Chen <sweetyfish@deepin.org>  Thu, 19 Sep 2024 22:44:49 +0800
+
 debconf-kde (1.1.0-1) unstable; urgency=medium
 
   * New upstream version: 1.1.0
